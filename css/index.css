@@ -1,0 +1,75 @@
+body {
+    min-height: 100vh;
+
+    width: 100%;
+
+    background-image: url("../index/body_background.jpg"); /*https://pixabay.com/photos/lost-found-lost-and-found-searching-1605501/*/
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+#container{
+    min-height: 100vh;
+    padding: 30px;
+    padding-top: 15px;
+}
+.jumbotron{
+
+    border-radius: 10px;
+    padding: 60px;
+    padding-top: 15px;
+    background-color: rgba(252, 255, 234, 0.73);
+    border-top: 2px;
+    border-top-color: orange;
+}
+.textInput{
+    box-sizing: content-box;
+    width: 100%;
+    border-radius: 6px;
+    padding: 5px;
+}
+#plugins{
+    padding: 30px;
+}
+#sign{
+    min-height: 90vh;
+}
+#log{
+    margin-top: 30px;
+}
+.conditional{
+    box-sizing: content-box;
+    width: 100%;
+    border-radius: 10px;
+}
+.category{
+    width: 50%;
+    height: 50px;
+    border-radius: 10px;
+    font-size: large;
+}
+#title{
+    font-family: 'Amatic SC', cursive;
+    font-size: 60px;
+    font-weight: bolder;
+}
+
+/* Novo */
+#Reg{
+    color: #798eff;
+    font-size: 15px;
+    margin-left: 3px;
+    margin-top: 5px;
+    transition: .3s;
+    font-weight: bold;
+}
+#Reg:hover{
+    transition: .3s;
+    color: #333;
+    text-decoration: none;
+}
+#error_mess{
+    color: red;
+    font-weight: bold;
+    transition: .5s;
+}

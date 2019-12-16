@@ -1,5 +1,6 @@
-body, html{
-    height: 200vh;
+@font-face {
+    font-family: "Boring";
+    src: url("../fonts/BoringLesson.ttf") format("truetype");
 }
 .title{
     background-image: url("https://images.pexels.com/photos/1383985/pexels-photo-1383985.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
@@ -7,9 +8,13 @@ body, html{
     background-position: 0 -100px;
 }
 .title-font{
-    font-family: Helvetica;
+    font-family: Boring;
+    font-size: 5em;
 }
 .white-text{
     color: whitesmoke;
+}
+.div-style{
+    background-color: #77777777;
 }
 

@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link type="text/css" rel="stylesheet" href="style.css">
+    <link type="text/css" rel="stylesheet" href="css/style.css">
 
 </head>
 <body>
@@ -58,7 +58,7 @@
     <div class="row title align-items-center">
 
         <div class="col-12 ">
-            <h1 class="title-font white-text">DOBRODOŠLI U BEOGRAD</h1>
+            <h1 class="title-font white-text">BEOGRAD</h1>
 
         </div>
     </div>
