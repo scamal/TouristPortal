@@ -3,7 +3,7 @@
 define("HOST", "localhost");
 define("USER", "root");
 define("PASSWORD", ""); // "" default for localhost
-define("DATABASE", "lost_and_found");
+define("DATABASE", "beograd");
 
 $connect = mysqli_connect(HOST, USER, PASSWORD, DATABASE);
 

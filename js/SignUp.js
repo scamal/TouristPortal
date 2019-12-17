@@ -2,7 +2,7 @@ var inputs = document.getElementsByTagName("input");
 $('form').on('submit',function (e) {
     e.preventDefault();
     if(submit_function(e)){
-        sendAjax();
+        sendAjax(e.currentTarget);
     }
 })
 function submit_function(form) {
@@ -133,11 +133,12 @@ function write_user() {
     xhttp.open("POST", "getcustomer.php?q="+str, true);
     xhttp.send();
 }
+
 function sendAjax() {
     var username = document.querySelector("#Username").value;
     var email = document.querySelector("#Mail").value;
     var password = document.querySelector("#Password").value;
-    //var phone = document.querySelector("#Phone_number").value;
+   // var phone = document.querySelector("#Phone_number").value;
     var name = document.querySelector("#Name").value;
     var surname = document.querySelector("#Last_name").value;
     var ajaxMessage = document.querySelector('#ajax-message');
@@ -154,9 +155,10 @@ function sendAjax() {
 
             } else {
                 alert(response.success);
-                window.location.href = "/web_project/lost_or_found.html";
+                window.location.href = "index.php";
                 form.reset();
             }
         }
+
     })
 }

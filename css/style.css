@@ -9,12 +9,42 @@
 }
 .title-font{
     font-family: Boring;
-    font-size: 5em;
+    font-size: 5vw;
+}
+.boring-font{
+    font-family: Boring;
 }
 .white-text{
     color: whitesmoke;
 }
 .div-style{
-    background-color: #77777777;
+    background-color: rgba(96, 99, 97, 0.77);
 }
+.konj{
+    background-image: url("https://scontent.fbeg4-1.fna.fbcdn.net/v/t1.15752-9/79184837_555422581680416_6406842534085001216_n.jpg?_nc_cat=106&_nc_ohc=oR7VbyEoxCcAQm1QCrDHh0H6Qh2mKlknOYyootbu85bNGNQ-x7dJgDUsQ&_nc_ht=scontent.fbeg4-1.fna&oh=79ee3a67f9f1f8b5852b93b3a1367f6b&oe=5E74C3C1");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.uniform-height{
+    position: relative;
+    height: 100%;
+}
+.min-height-100{
+    min-height: 90vh;
+}
+.height-100vh{
+    height: 100vh;
+}
+img {
+    display: table-cell;
+    vertical-align: bottom;
+
+
+ }
+/*.d
+iv-style>img{
+    position: absolute;
+    bottom: 0;
+}*/
+
 

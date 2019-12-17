@@ -55,13 +55,46 @@
 </nav>
 <div class="container-fluid">
 
-    <div class="row title align-items-center">
+    <div class="row align-items-center">
 
-        <div class="col-12 ">
-            <h1 class="title-font white-text">BEOGRAD</h1>
+        <div class="col-12 title align-middle">
+            <h1 class="title-font white-text" style="position: absolute;
+right: 0;
+bottom: 30%;">BEOGRAD</h1>
 
         </div>
+        <div class="content col-12 row">
+        <div class="col-4 p-3 ">
+            <div class="w-100 div-style uniform-height p-3 ">
+                <p>
+                    Ovo je sajt o Beogradu, glavnom i najvećem gradu u Republici Srbiji.
+                </p>
+
+                <p>
+                    Ovo je sajt o Beogradu, glavnom i najvećem gradu u Republici Srbiji.
+                </p>
+                <img src="https://scontent.fbeg4-1.fna.fbcdn.net/v/t1.15752-9/79538934_762649307480880_8681411318026076160_n.jpg?_nc_cat=110&_nc_ohc=sEVwMUdjA2QAQmVR-oapfahsUh4Rvrr7GDH5L6NVAwoRIp-0sVlRBEfmw&_nc_ht=scontent.fbeg4-1.fna&oh=0b3dea308ec1a6abb9838261f1c5e345&oe=5E73A4DE"
+                     class="img-fluid" >
+            </div>
+        </div>
+            <div class="col-4 p-3 ">
+                <div class="w-100 div-style uniform-height p-3 ">
+
+                    <img src="https://scontent.fbeg4-1.fna.fbcdn.net/v/t1.15752-9/79538934_762649307480880_8681411318026076160_n.jpg?_nc_cat=110&_nc_ohc=sEVwMUdjA2QAQmVR-oapfahsUh4Rvrr7GDH5L6NVAwoRIp-0sVlRBEfmw&_nc_ht=scontent.fbeg4-1.fna&oh=0b3dea308ec1a6abb9838261f1c5e345&oe=5E73A4DE"
+                         class="img-fluid">
+                </div>
+            </div>
+            <div class="col-4 p-3 ">
+                <div class="w-100 div-style uniform-height p-3 ">
+                    <p>
+                        Ovo je sajt o Beogradu, glavnom i najvećem gradu u Republici Srbiji.
+                    </p>
+                    <img src="https://scontent.fbeg4-1.fna.fbcdn.net/v/t1.15752-9/79538934_762649307480880_8681411318026076160_n.jpg?_nc_cat=110&_nc_ohc=sEVwMUdjA2QAQmVR-oapfahsUh4Rvrr7GDH5L6NVAwoRIp-0sVlRBEfmw&_nc_ht=scontent.fbeg4-1.fna&oh=0b3dea308ec1a6abb9838261f1c5e345&oe=5E73A4DE"
+                         class="img-fluid">
+                </div>
+            </div>
     </div>
+</div>
 </div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

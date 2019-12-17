@@ -17,7 +17,7 @@
 </head>
 <body>
 <script src="js/jquery.js"></script>
-<div class="container-fluid" id="container">
+<div class="container-fluid konj" id="container">
     <div class="row ">
         <div class="col-md-3"></div>
         <div  class="jumbotron col-md-6 div-style" id="sign">

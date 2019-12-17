@@ -8,7 +8,7 @@ if(isset($_GET['js'])){
     $data = [
         "name"  => mysqli_real_escape_string($connect,trim($_GET['name'])),
         "surname"  => mysqli_real_escape_string($connect,trim($_GET['surname'])),
-        "phone"  => mysqli_real_escape_string($connect,trim($_GET['phone'])),
+        //"phone"  => mysqli_real_escape_string($connect,trim($_GET['phone'])),
         "username" => mysqli_real_escape_string($connect,trim($_GET['username'])),
         "email" => mysqli_real_escape_string($connect,trim($_GET['email'])),
         "password" => mysqli_real_escape_string($connect,trim($_GET['password']))
@@ -20,12 +20,12 @@ if(isset($_GET['js'])){
         }
     }
 
-    if (preg_match('/[A-Za-z]/',$data["phone"]) And $data["phone"]!=""){
+    /*if (preg_match('/[A-Za-z]/',$data["phone"]) And $data["phone"]!=""){
         exit(json_encode(['error' => 'Invalid phone number!']));
-    }
-if ($data["phone"]==""){
+    }*/
+/*if ($data["phone"]==""){
     $data["phone"]="null";
-}
+}*/
     if (!preg_match('/[A-Za-z].*[0-9]|[0-9].*[A-Za-z]/', $data["password"]) and strlen($data["password"].length)>=8)
     {
         exit(json_encode(['error' => 'Password is invalid!']));
@@ -36,27 +36,30 @@ if ($data["phone"]==""){
     }
 
 
-    $sql = "SELECT ID_user FROM users WHERE mail = '{$data['email']}';";
+    $sql = "SELECT username FROM users WHERE email = '{$data['email']}';";
     if (!$query=mysqli_query($connect,$sql)){
-        exit(json_encode(['error' => "There is some error!"]));
+        $err = mysqli_error($connect);
+        exit(json_encode(['error' => "There is some error! $err"]));
     }
     if($row = mysqli_num_rows($query) > 0) {
         exit(json_encode(['error' => 'You are already registered']));
     }
 
-    $sql = "INSERT INTO users(mail,Username,Password,Name,Last_name,Phone_number) VALUES('{$data['email']}','{$data['username']}','$password','{$data['name']}','{$data['surname']}','{$data['phone']}');";
+    $sql = "INSERT INTO users(email,username,password,name,last_name) VALUES('{$data['email']}','{$data['username']}','$password','{$data['name']}','{$data['surname']}');";
 if (!$query=mysqli_query($connect,$sql)){
-    exit(json_encode(['error' => "There is some error!"]));
+    $err = mysqli_error($connect);
+    exit(json_encode(['error' => "You are already registered!"]));
 }
-    $sql = "SELECT ID_user FROM users WHERE mail = '{$data['email']}';";
+    $sql = "SELECT username FROM users WHERE email = '{$data['email']}';";
     if (!$query=mysqli_query($connect,$sql)){
-        exit(json_encode(['error' => "There is some error!"]));
+        $err = mysqli_error($connect);
+        exit(json_encode(['error' => "There is some error! $err"]));
     }
     if($row = mysqli_num_rows($query) > 0){
         $i=0;
         while ($result = mysqli_fetch_array($query,MYSQLI_ASSOC)){
             if (!$i){
-                $user = mysqli_real_escape_string($connect,trim($result["ID_user"]));
+                $user = mysqli_real_escape_string($connect,trim($result["username"]));
                 sesUser($user);
                 //echo $user;
             }
