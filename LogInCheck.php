@@ -1,9 +1,11 @@
 <?php
 
-//session_start();
+require_once "requires/session.php";
 
 include_once "requires/db_config.php";
-require_once "requires/session.php";
+
+require_once "requires/recaptchaCheck.php";
+//require_once "requires/session.php";
 
 //$_SESSION['logged'] = "false";
 
@@ -14,6 +16,8 @@ if(isset($_POST['Username']))
 
 if(isset($_POST['Password']))
     $password =  mysqli_real_escape_string($connect, $_POST['Password']);
+
+
 
 /*
 $SALT="aSD2213qse21ewdqwQWEQDWQWE13";
@@ -32,8 +36,16 @@ if(strlen($password) < 1)
     echo "Enter password ! <br>";
 else
     $check_pass = 1;
+$check_captcha=0;
+//var_dump(reCaptchaCheck());
+if (reCaptchaCheck()){
+    $check_captcha = 1;
+}
+else
+    echo "Enter captcha! <br>";
 
-if($check_pass == 1 AND $check_username == 1) {
+
+if($check_pass == 1 AND $check_username == 1 AND $check_captcha==1) {
 
     $sql = "SELECT * FROM users WHERE username = '$username'";
     $result = mysqli_query($connect, $sql) or die(mysqli_error($connect));
@@ -51,20 +63,23 @@ if($check_pass == 1 AND $check_username == 1) {
             exit;
 
         }*/
-    if (mysqli_num_rows($result) > 0) {
-        while ($record = mysqli_fetch_array($result)) {
-            $pass = $record['password'];
-            if(password_verify($password,$pass)){
-                echo "Succesfull !";
-                sesUser($password);
+    require_once "requires/recaptchaCheck.php";
+
+
+        if (mysqli_num_rows($result) > 0) {
+            while ($record = mysqli_fetch_array($result)) {
+                $pass = $record['password'];
+                if (password_verify($password, $pass)) {
+                    echo "Succesfull !";
+
+                    $_SESSION['username'] = $username;
+                } else echo "Incorrect username or password !";
             }
+        } else {
 
-            else echo "Incorrect username or password !";
+            echo "Incorrect username or password !";
         }
-    } else {
 
-        echo "Incorrect username or password !";
-    }
 
 }
 else

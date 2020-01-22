@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
-    <title>Bootstrap Scrollspy 1</title>
+    <title>Location info</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--font-->
@@ -12,10 +12,13 @@
 
 </head>
 <body class="text-center konj">
+<?php
+require_once "navbar.php";
+?>
 <div class="container p-4 text-center">
     <div class="div-style row p-3 rounded min-height-100 text-center">
 <?php
-session_start();
+
 
 
 require('requires/db_config.php');
