@@ -1,0 +1,10 @@
+
+#map{
+    margin: 10px;
+}
+#container{
+    visibility: hidden;
+}
+.overflow{
+    max-width: 100%;
+}

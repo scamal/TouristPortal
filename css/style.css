@@ -35,16 +35,50 @@
 .height-100vh{
     height: 100vh;
 }
+.subtitle-font{
+
+    font-family: 'Amatic SC', cursive;
+    font-size: 60px;
+    font-weight: bolder;
+
+}
 img {
     display: table-cell;
     vertical-align: bottom;
 
 
  }
+.largeDiv{
+    height: 90vh;
+    width: 100%;
+}
+.tableDiv{
+    display: table;
+}
+.centerInTable{
+    vertical-align: middle;
+    display: table-cell;
+}
+.miniCell{
+    background-color: #00000000;
+}
 /*.d
 iv-style>img{
     position: absolute;
     bottom: 0;
 }*/
+.links{
+    color: #000;
+    text-decoration: none;
+}
+.links:hover{
+    color: #444;
+    text-decoration: none;
+}
+.links:visited{
+     color: #444;
+    text-decoration: none;
+}
+
 
 
