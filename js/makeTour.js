@@ -1,22 +1,21 @@
 $(document).ready(function () {
-    var buttons = document.getElementsByTagName("button");
+    /*var buttons = document.getElementsByTagName("button");
     for (let i=0;i<buttons.length;i++){
         buttons[i].addEventListener('click',function () {
             makeString(buttons[i]);
         });
 
-    }
+    }*/
     createMap();
 
 
 
 
 })
-var locationString="";
+var locationsIDString="";
 let count = 0;
 let longt;
 let lat;
-let locationsIDString = "";
 let locationIDArr = [];
 var maplayer = undefined;
 function makeString(t) {
@@ -24,23 +23,26 @@ function makeString(t) {
 
 
     let doNotAdd=0;
-    let splited =  locationString.split(" ");
+    locationsIDString+=t.toString()+", ";
+    console.log(locationsIDString)
+    locationIDArr.push(t);
 
-    for (let i=0;i<splited.length;i++){
+    /*for (let i=0;i<splited.length;i++){
         if (splited[i]==t.id){
             doNotAdd=1;
             //console.log("do not add = 1")
         }
-    }
+    }*/
 
     let tour = document.getElementById("tour");
-    if (doNotAdd==0) {
+  //  if (doNotAdd==0) {
         //locationString =" " + locationString + t.id + " ";
         //console.log(locationString);
-        let id = t.id+"row";
+        let id = t;
         //console.log(i);
-        let row = document.getElementById(id).outerHTML;
-        locID = id.substring(-2,2)
+        button = document.getElementById(id).outerHTML;
+        let row = document.getElementById(id+"row").innerHTML;
+        locID = id
 
 
 
@@ -49,8 +51,8 @@ function makeString(t) {
 
         //make locations IDs
 
-        locationsIDString+=t.id+", ";
-        locationIDArr.push(t.id);
+        //locationsIDString+=t.id+", ";
+        //locationIDArr.push(t.id);
 
 
         //sendAjax for location
@@ -61,7 +63,7 @@ function makeString(t) {
             async: false,
             type: 'POST',
             dataType: 'json',
-            data: {location_ID: t.id},
+            data: {location_ID: id},
            // data: 'location_ID=' + t.id,
             success: function (response) {
 
@@ -91,12 +93,13 @@ function makeString(t) {
 
         //endofAjax
 
-        addMarker(longt,lat);
+
         waypoints = addWaypoint(longt,lat);
-        row = row.replace('<button id="'+locID+'" class="btn btn-primary">Add to tour</button>','<button id=remove'+locID+' onclick="removeWaypoint('+locID+','+longt+','+lat+')" class="btn btn-primary removeLoc">Remove</button>')
+        row = row.replace(button,'<button id=remove'+locID+' onclick="removeWaypoint('+locID+','+longt+','+lat+')" class="btn btn-primary removeLoc">Remove</button>')
+    tour.innerHTML += row;
 
 
-        if (count>0){
+        if (waypoints.length>1){
 
             //console.log(makeUserRoute(waypoints))
             //let route = makeUserRoute(waypoints);
@@ -104,7 +107,12 @@ function makeString(t) {
 
                 waypoints: waypoints
             });
-            document.getElementById("buttons").innerHTML="<label for='tourName'>Tour name: </label><br><input type='text' name='tourName' style='width: 50vw' id='tourName'><br><label for='tourDesc'>Tour description: </label><br><textarea rows=\"4\" style='width: 50vw' name='tourDesc' id='tourDesc'></textarea><br><button id='postTour' class='btn btn-primary' onclick='insertTour()'>Save your tour</button>";
+            document.getElementById("buttons").innerHTML="<label for='tourName'>Tour name: </label><br><input type='text' name='tourName' style='width: 50vw' id='tourName'><br><label for='tourDesc'>Tour description: </label><br><textarea rows=\"4\" style='width: 50vw' name='tourDesc' id='tourDesc'></textarea><br>" +
+                "<br><div class=\"custom-control custom-checkbox\">\n" +
+                "  <input type=\"checkbox\" class=\"custom-control-input\" checked='true' id=\"makePublic\" name='makePublic' value='MakeIt'>\n" +
+                "  <label class=\"custom-control-label\" for=\"makePublic\">Make tour public</label>\n" +
+                "</div>" +
+                "<br><button id='postTour' class='btn btn-primary' onclick='insertTour()'>Save your tour</button>";
 
         }
         //waypoints = ;
@@ -120,14 +128,15 @@ function makeString(t) {
         });*/
 
 
-        tour.innerHTML += row;
+
 
         //console.log(longt+"sddsfsd");
 
-    }
+  //  }
     count++;
     //console.log(count)
-    if (count==1){
+    if (waypoints.length==1){
+        addMarker(longt,lat);
     }
 
 
@@ -208,60 +217,69 @@ function makeUserRoute(waypoints){
 }*/
 
 function insertTour() {
-    let splitedLS = locationString.split(" ");
+    //let splitedLS = locationString.split(" ");
     let sql = "select * from locations where ";
     let name = document.getElementById("tourName").value;
     let desc = document.getElementById("tourDesc").value;
+    let makePublic = document.getElementById('makePublic').checked;
+    console.log(locationsIDString)
+    if (waypoints.length>1){
+        $.ajax({
+            url: 'requires/insertTour.php',
+            async: false,
+            type: 'POST',
+            dataType: 'json',
+            data: {location_ID: locationsIDString.replace("+",""),locationArr: locationIDArr, tourName:name,tourDesc:desc,makePublic: makePublic},
+            // data: 'location_ID=' + t.id,
+            success: function (response) {
 
-    $.ajax({
-        url: 'requires/insertTour.php',
-        async: false,
-        type: 'POST',
-        dataType: 'json',
-        data: {location_ID: locationsIDString,locationArr: locationIDArr, tourName:name,tourDesc:desc},
-        // data: 'location_ID=' + t.id,
-        success: function (response) {
+                if (response.saved) {
+                    var txt;
+                    if (confirm(response.saved)) {
+                        $.ajax({
+                            url: 'requires/addToMyTours.php',
+                            async: false,
+                            type: 'POST',
+                            dataType: 'json',
+                            data: {tour_ID: response.lastIndex},
+                            success: function (res) {
 
-            if (response.saved) {
-                var txt;
-                if (confirm(response.saved)) {
-                    $.ajax({
-                        url: 'requires/addToMyTours.php',
-                        async: false,
-                        type: 'POST',
-                        dataType: 'json',
-                        data: {tour_ID: response.lastIndex},
-                        success: function (res) {
+                            }
+                        });
+                    } else {
+                        //txt = "You pressed Cancel!";
+                    }
 
-                        }
-                    });
                 } else {
-                    //txt = "You pressed Cancel!";
+                    alert(response.status);
+                    //console.log(response.lat);
+                    //console.log(response.longt);
+                    // ovo je obrnuto zbog greske u phpu
+                    //locationsIDString+=t.id+" ";
+
+                    //console.log(longt);
+                    //addMarker(longt,lat);
+
+
+
+
+                    //window.location.href = "index.php";
+                    // form.reset();
                 }
-
-            } else {
-                alert(response.status);
-                //console.log(response.lat);
-                //console.log(response.longt);
-                // ovo je obrnuto zbog greske u phpu
-                //locationsIDString+=t.id+" ";
-
-                //console.log(longt);
-                //addMarker(longt,lat);
-
-
-
-
-                //window.location.href = "index.php";
-                // form.reset();
             }
-        }
 
 
-    });
+        });
+    }
+    else {
+        alert("Please add more than one location.")
+    }
+
 }
 function removeWaypoint(locID,longi,lati) {
     delWaypoint(longi,lati);
+    locationsIDString = locationsIDString.replace(locID+", ",'')
+    locationIDArr = locationIDArr.filter(ID=>ID==locID);
     count--;
     let btn = document.getElementById("remove"+locID);
     let td = btn.parentElement;
@@ -273,7 +291,12 @@ function removeWaypoint(locID,longi,lati) {
         reloadMap(waypoints[0][0],waypoints[0][1]);
         console.log(waypoints);
         routes = []
-        document.getElementById("buttons").innerHTML="<label for='tourName'>Tour name: </label><br><input type='text' name='tourName' style='width: 50vw' id='tourName'><br><label for='tourDesc'>Tour description: </label><br><textarea rows=\"4\" style='width: 50vw' name='tourDesc' id='tourDesc'></textarea><br><button id='postTour' class='btn btn-primary' onclick='insertTour()'>Save your tour</button>";
+        document.getElementById("buttons").innerHTML="<label for='tourName'>Tour name: </label><br><input type='text' name='tourName' style='width: 50vw' id='tourName'><br><label for='tourDesc'>Tour description: </label><br><textarea rows=\"4\" style='width: 50vw' name='tourDesc' id='tourDesc'></textarea><br>" +
+            "<br><div class=\"custom-control custom-checkbox\">\n" +
+            "  <input type=\"checkbox\" class=\"custom-control-input\" checked='true' id=\"makePublic\" name='makePublic' value='MakeIt'>\n" +
+            "  <label class=\"custom-control-label\" for=\"makePublic\">Make tour public</label>\n" +
+            "</div>" +
+            "<br><button id='postTour' class='btn btn-primary' onclick='insertTour()'>Save your tour</button>";
         if (waypoints.length>1){
             routes.push(L.mapquest.directions().route({
 

@@ -82,6 +82,7 @@ function checkAll(){
 }
 function SignIn(e){
     e.stopPropagation();
+    e.stopPropagation();
     //this.stopPropagation();
     //console.log(this.id);
 
@@ -108,6 +109,17 @@ function SignIn(e){
         xmlhttp.open("POST", "LogInCheck.php", true);
         xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xmlhttp.send(postData);*/
+        let respo
+        $.ajax({
+            url: 'requires/loadLocationJS.php',
+            type: 'POST',
+            //data: 'username=' + username + '&email=' + email + '&password=' + password + '&js=' + 1 + "&name=" + name + "&surname=" + surname,
+            success: function (res) {
+                console.log(res)
+                respo = res;
+            }
+
+        })
         $.ajax({
             url: 'LogInCheck.php',
             type: 'POST',
@@ -122,8 +134,10 @@ function SignIn(e){
                 grecaptcha.reset()
                 if (response === "Succesfull !") {
                     //alert(response.error);
+
                     mess.style.color = "green";
-                    window.location.reload();
+
+                    window.location.replace('index.php');
                 }
             }
 
