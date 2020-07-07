@@ -1,10 +1,12 @@
 <?php
 require_once "requires/session.php";
+require_once "requires/PreviousPage.php";
+
 ?>
 <script>
 
 </script>
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark sticky-top">
     <a class="navbar-brand" href="index.php">Belgrade</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,20 +15,39 @@ require_once "requires/session.php";
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="#">Lokacije</a>
+                <a class="nav-link" href="locationList.php">Locations</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="BelgradeHistory.php">Istorija</a>
+                <a class="nav-link" href="BelgradeHistory.php">History</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="BelgradeMap.php">Mapa</a>
+                <a class="nav-link" href="BelgradeMap.php">Map</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#section3">Geografija</a>
+                <a class="nav-link" href="geography.php">Geography</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="makeTour.php">Napravite svoju turu</a>
+                <a class="nav-link" href="makeTour.php">Make a tour</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="tourList.php">Tours</a>
+            </li>
+            <?php
+            if (isset($_SESSION['username'])){
+                echo "<li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"userTours.php\">My tours</a>
+            </li>";
+            }
+
+            if (isset($_SESSION['admin'])){
+                if ($_SESSION['admin']==="daAdminje"){
+                    echo "<li class=\"nav-item\">
+                <a class=\"nav-link\" href=\"admin\">Admin</a>
+            </li>";
+                }
+
+            }
+            ?>
 
         </ul>
         <ul class="navbar-nav " >

@@ -10,6 +10,18 @@ function addAdmin(user) {
         }
     });
 }
+function removeAdmin(user) {
+    $.ajax({
+        url: 'removeAdmin.php',
+        /*async: false,*/
+        type: 'POST',
+        data: {user: user},
+        success: function (res) {
+            alert(res);
+            location.reload();
+        }
+    });
+}
 function deleteUser(user) {
     $.ajax({
         url: 'deleteUser.php',

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
-    <title>Belgrade</title>
+    <title>Map | Belgrade</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--font-->
@@ -24,7 +24,7 @@
 require_once "navbar.php";
 ?>
 <div class="container-fluid  p-4">
-    <h1 class="subtitle-font">Mapa grada</h1>
+    <h1 class="subtitle-font">City Map</h1>
     <div class="col-12 height">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d181140.11997889695!2d20.282513414404647!3d44.81515972841322!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475a7aa3d7b53fbd%3A0x1db8645cf2177ee4!2sBelgrade!5e0!3m2!1sen!2srs!4v1576649772317!5m2!1sen!2srs" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
     </div>
@@ -38,5 +38,7 @@ require_once "navbar.php";
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="js/simpleWeather.js"></script>
 </body>
 </html>

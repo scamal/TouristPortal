@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
-    <title>Location info</title>
+    <title>Users | Admin | Belgrade</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--font-->
@@ -54,11 +54,13 @@ if (isset($_SESSION['admin'])) {
                 echo "<tr><td>$username</td><td>$name</td><td>$lastName</td><td>$mail</td>";
                 if ($adm ==1){
                     echo "<td>YES</td>";
+                    echo "<td><button class='btn btn-primary' onclick='removeAdmin(\"$username\")' style='min-width: 80%'>Remove Administrator</button></td>";
                 }
                 else {
                     echo "<td>NO</td>";
+                    echo "<td><button class='btn btn-primary' onclick='addAdmin(\"$username\")' style='min-width: 80%'>Add administrator</button></td>";
                 }
-                echo "<td><button class='btn btn-primary' onclick='addAdmin(\"$username\")'>Add administrator</button></td><td><button class='btn btn-primary' onclick='deleteUser(\"$username\")'>Delete user</button></td></tr>";
+                echo "<td><button class='btn btn-primary' onclick='deleteUser(\"$username\")'>Delete user</button></td></tr>";
             }
 
         }

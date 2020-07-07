@@ -1,7 +1,6 @@
 <?php
 require_once "../requires/session.php";
 require_once "../requires/PreviousPage.php";
-getUri();
 ?>
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
     <a class="navbar-brand" href="../index.php">Belgrade</a>

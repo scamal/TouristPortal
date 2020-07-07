@@ -1,5 +1,5 @@
 <?php
-
+$success = False;
 require_once "requires/session.php";
 
 include_once "requires/db_config.php";
@@ -69,11 +69,19 @@ if($check_pass == 1 AND $check_username == 1 AND $check_captcha==1) {
         if (mysqli_num_rows($result) > 0) {
             while ($record = mysqli_fetch_array($result)) {
                 $pass = $record['password'];
-                if (password_verify($password, $pass)) {
-                    echo "Succesfull !";
+                $verified = $record['user_verified'];
+                if ($verified==1){
+                    if (password_verify($password, $pass)) {
+                        echo "Succesfull !";
 
-                    $_SESSION['username'] = $username;
-                } else echo "Incorrect username or password !";
+                        $_SESSION['username'] = $username;
+                        #require_once "requires/PreviousPage.php";
+                        require_once "requires/checkForUser.php";
+                        checkAdmin($connect);
+                    } else echo "Incorrect username or password !";
+                }
+                else echo "Please verify your account.";
+
             }
         } else {
 

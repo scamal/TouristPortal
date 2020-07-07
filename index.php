@@ -28,7 +28,7 @@ require_once "navbar.php";
         <div class="col-12 title align-middle">
             <h1 class="title-font white-text" style="position: absolute;
 right: 0;
-bottom: 30%;">BEOGRAD</h1>
+bottom: 30%;">BELGRADE</h1>
 
         </div>
         <div class="content col-12 row">
@@ -37,7 +37,7 @@ bottom: 30%;">BEOGRAD</h1>
                 <img src="img/street-3043895_640.jpg" class="img-fluid">
                 <br><br>
                 <p class="text-center">
-                    Beograd je glavni i najnaseljeniji grad Republike Srbije i privredno, kulturno i obrazovno središte zemlje. Grad leži na ušću Save u Dunav, gde se Panonska nizija spaja sa Balkanskim poluostrvom.
+                    Belgrade was fought over in 115 wars and appropriately got a nickname, the White Fenix as it has been destroyed and rebuilt more than 44 times during its history.
                 </p>
 
 
@@ -48,7 +48,7 @@ bottom: 30%;">BEOGRAD</h1>
                     <img src="img/panorama-4569756_640.jpg" class="img-fluid">
                     <br><br>
                     <p class="text-center">
-                        Jedan je od starijih gradova u Evropi. Prva naselja na teritoriji Beograda datiraju iz praistorijske Vinče, 4.800. godina pre nove ere. Sam grad su osnovali Kelti u 3. veku pre n. e, pre nego što je postao rimsko naselje Singidunum. Beograd je glavni grad Srbije od 1405. godine.
+                        Belgrade is the capital and largest city of Serbia. It is located at the confluence of the Sava and Danube rivers and the crossroads of the Pannonian Plain and the Balkan Peninsula.
                     </p>
                 </div>
             </div>
@@ -58,7 +58,7 @@ bottom: 30%;">BEOGRAD</h1>
                     <img src="img/belgrade-466173_640.jpg" class="img-fluid">
                     <br><br>
                     <p class="text-center">
-                        Beograd se nalazi na 116,75 metara nadmorske visine, na koordinatama 44°49'14" severno i 20°27'44" istočno. Istorijsko jezgro Beograda (današnja Beogradska tvrđava) nalazi se na desnoj obali Save.
+                        Long cut off from the international movements, Belgrade is a hub for contemporary art in Europe once again. According to BBC, Belgrade is one of five most creative cities in the world.
                     </p>
 
                 </div>

@@ -3,6 +3,7 @@
 include "requires/db_config.php";
 
 
+
 ?>
 
 <!DOCTYPE html>
@@ -25,12 +26,18 @@ include "requires/db_config.php";
 </head>
 <body>
 <?php
-require_once "navbar.php";
+require_once "requires/PreviousPage.php";
 if (isset($_SESSION['success'])){
-    if ($_SESSION['success']==1){
+    if ($_SESSION['success']==true){
         redirect();
     }
+
 }
+require_once "navbar.php";
+$_SESSION['success']=false;
+
+
+
 //session_start();
 ?>
 <div class="container-fluid" id="log_container">
@@ -60,7 +67,6 @@ if (isset($_SESSION['success'])){
 <script src="js/simpleWeather.js"></script>
 
 <script src="js/LogIn.js"></script>
-//captcha
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 

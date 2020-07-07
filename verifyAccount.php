@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Admin | Belgrade</title>
+    <title>Sign up</title>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,18 +22,32 @@
 </head>
 <body>
 <?php
-require_once "../requires/db_config.php";
+require_once "requires/db_config.php";
 require_once "navbar.php";
-if (isset($_SESSION['admin'])){
-    if ($_SESSION['admin']==="daAdminje"){
-        echo "<div class='largeDiv tableDiv text-center'><p1 class='centerInTable display-3'>Welcome to administrator page.</p1>";
+if (isset($_GET['code'])) {
+    $code = $_GET['code'];
+    $username = 1;
+    $link = $link = "'".$_SERVER['HTTP_HOST'] . "/TouristPortal/verifyAccount.php?code=$code'";
+    $sql = "select * from users where ver_link=$link";
+    $result = mysqli_query($connect, $sql) or die(mysqli_error($connect));
+
+    if (mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_array($result, MYSQLI_BOTH)){
+           $username=$row['username'];
+        }
+    }
+    $sql = "update users set user_verified=1 where username='$username'  ";
+    $result = mysqli_query($connect, $sql) or die(mysqli_error($connect));
+
+    if (mysqli_affected_rows($connect)) {
+        echo "<div class='largeDiv tableDiv text-center'><p1 class='centerInTable display-3'>You have verified account.</p1>";
     }
     else {
-        echo "<div class='largeDiv tableDiv text-center'><p1 class='centerInTable display-3'>You must be administrator to access this page.</p1>";
+        echo "<div class='largeDiv tableDiv text-center'><p1 class='centerInTable display-3'>Incorrect link.</p1>";
     }
 }
 else {
-    echo "<div class='largeDiv tableDiv text-center'><p1 class='centerInTable display-3'>You must be administrator to access this page.</p1>";
+    echo "<div class='largeDiv tableDiv text-center'><p1 class='centerInTable display-3'>Please use the link we have sent to you to verify account.</p1>";
 }
 ?>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
