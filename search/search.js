@@ -2,6 +2,7 @@ function searchB(sql,afterSql,sqlC,file) {
     button =  document.getElementById("search")
     term = button.value
     console.log(sql)
+    console.log(term)
     //button.style.backgroundColor= "#aaaaaa"
     $.ajax({
         url: 'search/search.php',

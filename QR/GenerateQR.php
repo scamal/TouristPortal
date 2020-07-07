@@ -22,7 +22,8 @@ if (mysqli_num_rows($result) > 0) {
 
     while ($row = mysqli_fetch_array($result, MYSQLI_BOTH)) // MYSQLI_ASSOC, MYSQLI_BOTH
     {
-        $url = $_SERVER['HTTP_HOST']."/TouristPortal/LocationInfo.php?scanned=1&location=";
+        //$url = $_SERVER['HTTP_HOST']."/TouristPortal/LocationInfo.php?scanned=1&location=";
+        $url = "http://grgulu.byethost7.com/TouristPortal/LocationInfo.php?scanned=1&location=";
         $url.= $row['location_ID'];
         $id = $row['location_ID'];
         $qr->url($url);
